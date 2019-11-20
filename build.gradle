@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 	id 'war'
+	id "org.sonarquote" version "2.8"
 }
 
 group = 'ch.noseryoung'
@@ -20,6 +21,12 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation "org.assertj:assertj-core:3.13.2"
+}
+
+sonarqube {
+	properties{
+		property "sonar.projectKey", "flxsch_devops"
+	}
 }
 
 test {
