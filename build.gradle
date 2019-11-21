@@ -4,6 +4,8 @@ plugins {
 	id 'java'
 	id 'war'
 	id "org.sonarqube" version "2.8"
+//	DOCKER
+	id "com.palantir.docker" version "0.22.1"
 }
 
 group = 'ch.noseryoung'
@@ -31,4 +33,13 @@ sonarqube {
 
 test {
 	useJUnitPlatform()
+}
+
+docker {
+	name 'flxsch/devops'
+	tags 'latest'
+	dockerfile file('Dockerfile')
+	files war.archiveFile
+	pull true
+	noCache true
 }
